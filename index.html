@@ -1,14 +1,7 @@
-<script>
-function payNow() {
-  const email = document.getElementById("email").value;
-  const amount = document.getElementById("usd").value;
-
-  if (!email || !amount) {
-    alert("Fill all fields");
-    return;
-  }
-
-  window.location.href =
-    "/api/pay?amount=" + amount + "&email=" + encodeURIComponent(email);
-}
-</script>
+fetch('/api/pay', {
+  method: 'POST',
+})
+.then(res => res.json())
+.then(data => {
+  window.location.href = data.invoice_url;
+});
