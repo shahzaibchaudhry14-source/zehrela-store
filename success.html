@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Successful</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1d976c, #93f9b9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #033;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  width: 350px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.checkmark {
+  font-size: 60px;
+  color: green;
+}
+
+h1 {
+  margin-top: 10px;
+}
+
+p {
+  color: #555;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  background: #00c853;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #00b34a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="checkmark">✔</div>
+  <h1>Payment Sent</h1>
+  <p>Your Bitcoin transaction has been initiated successfully.</p>
+  <p>Please wait for blockchain confirmation.</p>
+
+  <button onclick="goBack()">Make Another Payment</button>
+</div>
+
+<script>
+function goBack() {
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

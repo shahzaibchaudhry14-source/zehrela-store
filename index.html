@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zehrela Store - BTC Payment</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 15px;
+  width: 350px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.6);
+}
+
+h1 {
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 8px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  background: #00e676;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.rate {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 10px;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Zehrela Store</h1>
+
+  <input type="email" id="email" placeholder="Enter your email">
+  <input type="number" id="usd" placeholder="Enter amount in USD (e.g. 12)">
+
+  <button onclick="payNow()">Pay with BTC (Cash App)</button>
+
+  <div class="rate" id="rate">Fetching BTC rate...</div>
+</div>
+
+<script>
+let btcRate = 0;
+
+// Fetch live BTC price (USD)
+fetch("https://api.coindesk.com/v1/bpi/currentprice/USD.json")
+.then(res => res.json())
+.then(data => {
+  btcRate = data.bpi.USD.rate_float;
+  document.getElementById("rate").innerText =
+    "1 BTC ≈ $" + btcRate.toFixed(2);
+});
+
+function payNow() {
+  var email = document.getElementById("email").value;
+  var usd = document.getElementById("usd").value;
+
+  if (!email || !usd) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  var address = "1DoBxsTAa8AoViammUdSKJziMmfpcnmZAy";
+
+  // USD → BTC conversion
+  var btcAmount = usd / btcRate;
+
+  var link = "bitcoin:" + address + "?amount=" + btcAmount;
+
+  window.location.href = link;
+}
+</script>
+
+</body>
+</html>
