@@ -1,7 +1,150 @@
-fetch('/api/pay', {
-  method: 'POST',
-})
-.then(res => res.json())
-.then(data => {
-  window.location.href = data.invoice_url;
-});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Dollar Shop</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+header {
+  padding: 20px;
+  text-align: center;
+  background: #020617;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: #94a3b8;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #22c55e;
+  border: none;
+  border-radius: 8px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: #020617;
+  border-radius: 15px;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card h3 {
+  margin: 10px 0;
+}
+
+.price {
+  color: #22c55e;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #64748b;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+🛒 One Dollar Shop
+</header>
+
+<section class="hero">
+<h1>Premium Shalwar Kameez</h1>
+<p>Best Quality Clothing Only for $1 Deals</p>
+<button class="btn" onclick="scrollToProducts()">Shop Now</button>
+</section>
+
+<section class="products" id="products">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1603252109303-2751441dd157">
+<h3>Classic White Shalwar Kameez</h3>
+<p class="price">$1</p>
+<button class="btn" onclick="pay()">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1593032465171-8b51e0d9c2b5">
+<h3>Black Premium Suit</h3>
+<p class="price">$1</p>
+<button class="btn" onclick="pay()">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1618354691263-77b0c44d8d3a">
+<h3>Elegant Blue Shalwar Kameez</h3>
+<p class="price">$1</p>
+<button class="btn" onclick="pay()">Buy Now</button>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633">
+<h3>Royal Brown Suit</h3>
+<p class="price">$1</p>
+<button class="btn" onclick="pay()">Buy Now</button>
+</div>
+
+</section>
+
+<footer>
+© 2026 One Dollar Shop — All Rights Reserved
+</footer>
+
+<script>
+function scrollToProducts() {
+  document.getElementById("products").scrollIntoView({ behavior: "smooth" });
+}
+
+function pay() {
+  // 🔥 YAHAN APNA PAYMENT LINK LAGANA
+  window.location.href = "https://cash.app/$YourCashtag";
+}
+</script>
+
+</body>
+</html>
