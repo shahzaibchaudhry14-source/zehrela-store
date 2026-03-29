@@ -6,140 +6,226 @@
 <title>One Dollar Shop</title>
 
 <style>
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: 'Segoe UI', sans-serif;
-  background: #0f172a;
-  color: white;
 }
 
+body {
+  background: #ffffff;
+  color: #111;
+}
+
+/* HEADER */
 header {
-  padding: 20px;
-  text-align: center;
-  background: #020617;
-  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.logo {
+  font-size: 22px;
   font-weight: bold;
-  letter-spacing: 1px;
 }
 
-.hero {
-  text-align: center;
-  padding: 60px 20px;
-}
-
-.hero h1 {
-  font-size: 40px;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  color: #94a3b8;
-}
-
-.btn {
-  margin-top: 20px;
-  padding: 12px 25px;
-  background: #22c55e;
-  border: none;
-  border-radius: 8px;
-  color: black;
-  font-weight: bold;
+.menu-icon {
+  font-size: 26px;
   cursor: pointer;
 }
 
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  left: -300px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  padding: 20px;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar h3 {
+  margin: 15px 0;
+  font-size: 16px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  background: url('https://images.unsplash.com/photo-1603252109303-2751441dd157') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: 50px;
+}
+
+.hero button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* PRODUCTS */
 .products {
+  padding: 50px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 20px;
-  padding: 40px;
+  gap: 25px;
 }
 
 .card {
-  background: #020617;
-  border-radius: 15px;
-  padding: 20px;
+  border: 1px solid #eee;
+  padding: 15px;
   transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: scale(1.03);
 }
 
 .card img {
   width: 100%;
-  border-radius: 10px;
-}
-
-.card h3 {
-  margin: 10px 0;
 }
 
 .price {
-  color: #22c55e;
+  color: green;
   font-weight: bold;
 }
 
+/* FOOTER */
 footer {
-  text-align: center;
-  padding: 20px;
-  color: #64748b;
+  background: #111;
+  color: #fff;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 30px;
+}
+
+footer h4 {
+  margin-bottom: 10px;
+}
+
+footer input {
+  padding: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+footer button {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  background: #fff;
+  border: none;
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
-🛒 One Dollar Shop
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <div class="logo">One Dollar Shop</div>
 </header>
 
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <h3>NEW IN</h3>
+  <h3>READY TO WEAR</h3>
+  <h3>UNSTITCHED</h3>
+  <h3>WESTERN</h3>
+  <h3>MODEST WEAR</h3>
+  <h3>ACCESSORIES</h3>
+  <h3>MEN</h3>
+  <h3>FRAGRANCES</h3>
+  <h3>VIEW ALL</h3>
+</div>
+
+<!-- HERO -->
 <section class="hero">
-<h1>Premium Shalwar Kameez</h1>
-<p>Best Quality Clothing Only for $1 Deals</p>
-<button class="btn" onclick="scrollToProducts()">Shop Now</button>
+  <div>
+    <h1>Luxury Summer Collection</h1>
+    <button onclick="scrollProducts()">Shop Now</button>
+  </div>
 </section>
 
+<!-- PRODUCTS -->
 <section class="products" id="products">
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1603252109303-2751441dd157">
-<h3>Classic White Shalwar Kameez</h3>
-<p class="price">$1</p>
-<button class="btn" onclick="pay()">Buy Now</button>
-</div>
-
-<div class="card">
 <img src="https://images.unsplash.com/photo-1593032465171-8b51e0d9c2b5">
-<h3>Black Premium Suit</h3>
+<h3>Elegant Suit</h3>
 <p class="price">$1</p>
-<button class="btn" onclick="pay()">Buy Now</button>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1618354691263-77b0c44d8d3a">
-<h3>Elegant Blue Shalwar Kameez</h3>
-<p class="price">$1</p>
-<button class="btn" onclick="pay()">Buy Now</button>
+<button onclick="pay()">Buy Now</button>
 </div>
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633">
-<h3>Royal Brown Suit</h3>
+<h3>Classic Shalwar Kameez</h3>
 <p class="price">$1</p>
-<button class="btn" onclick="pay()">Buy Now</button>
+<button onclick="pay()">Buy Now</button>
 </div>
 
 </section>
 
+<!-- FOOTER -->
 <footer>
-© 2026 One Dollar Shop — All Rights Reserved
+<div>
+<h4>Customer Care</h4>
+<p>Contact Us</p>
+<p>Order Tracking</p>
+<p>Shipping Info</p>
+</div>
+
+<div>
+<h4>Information</h4>
+<p>About Us</p>
+<p>Stores</p>
+<p>Privacy Policy</p>
+</div>
+
+<div>
+<h4>Newsletter</h4>
+<input type="email" placeholder="Enter email">
+<button>Subscribe</button>
+</div>
 </footer>
 
 <script>
-function scrollToProducts() {
+function toggleMenu() {
+  document.getElementById("sidebar").classList.toggle("active");
+}
+
+function scrollProducts() {
   document.getElementById("products").scrollIntoView({ behavior: "smooth" });
 }
 
 function pay() {
-  // 🔥 YAHAN APNA PAYMENT LINK LAGANA
-  window.location.href = "https:/
+  window.location.href = "https://cash.app/$YourCashtag";
+}
+</script>
+
+</body>
+</html>
